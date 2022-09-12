@@ -23,7 +23,7 @@ class Option(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question,on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    isCheckd = models.BooleanField(False)
+    isChecked = models.BooleanField(False)
     
     
     def __str__(self):

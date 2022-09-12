@@ -38,7 +38,7 @@ def handleQuestion(request, quesId):
                 newOpt = {
                     'id': op['id'],
                     'title': op['title'],
-                    'isCheckd': op['isCheckd']
+                    'isChecked': op['isChecked']
                 }
                 optdata.append(newOpt)
             newQ = {

@@ -42,3 +42,24 @@ def handleImageDelete(request):
             return Response({'error': 'Invalid JSON data in the request body'}, status=400);
         except Exception as e:
             return  Response({'success': False, 'message':{e}, 'status': 500})
+@api_view(['PUT'])
+def handleImageEdit(request):
+     if request.method == 'PUT':
+        try:
+            data = json.loads(request.body)  # Parse the JSON array from the request body
+            id = request.data.get('id')
+            isSelect = request.data.get('isSelect')
+            if id and isSelect is not None:
+                imgObj = Image.objects.get(id=id)
+                imgObj.isSelect = isSelect
+                imgObj.save()
+                
+                image_serializer = ImageSerializer(imgObj).data
+                return  Response({'success': True, 'message':'Image Edit Successful','data':image_serializer, 'status': status.HTTP_200_OK})
+            else:
+                return Response({'message': 'Data missing from request'}, status=400)
+            
+        except json.JSONDecodeError:
+            return Response({'error': 'Invalid JSON data in the request body'}, status=400);
+        except Exception as e:
+            return  Response({'success': False, 'message':{e}, 'status': 500})

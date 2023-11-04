@@ -12,7 +12,7 @@ import json
 @api_view(['GET','POST'])
 def handleImage(request):
     if request.method == 'GET':
-        imgs = Image.objects.all()
+        imgs = Image.objects.all().order_by('id')
         imgSerializer = ImageSerializer(imgs, many = True).data
         data=[]
         for q in imgSerializer:

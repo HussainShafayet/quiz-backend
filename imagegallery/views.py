@@ -41,6 +41,7 @@ def handleImage(request):
 
         image = Image(file=request.FILES['file'], image_name=image_name, isSelect=is_select, isFeatured=is_featured)
         image.save()
-       
-        return Response({'success': True, 'data':{}, 'status': status.HTTP_200_OK})
+        
+        image_serializer = ImageSerializer(image)
+        return Response({'success': True, 'data':image_serializer.data, 'status': status.HTTP_200_OK})
         pass

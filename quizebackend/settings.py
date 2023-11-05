@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*hl+$v6+&y38o%1s889^i+7k07ogww8g9wgx8%o$=1xzeq!*!a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = ['localhost:300','127.0.0.1', '*']
+ALLOWED_HOSTS = ['*']
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",
@@ -101,12 +101,8 @@ WSGI_APPLICATION = 'quizebackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
